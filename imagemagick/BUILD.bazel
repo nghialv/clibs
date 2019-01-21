@@ -1,0 +1,66 @@
+#TODO: Fix the platforms
+cc_import(
+    name = "core_import",
+    shared_library = select(
+        {
+            "@io_bazel_rules_go//go/platform:darwin": ":darwin/lib/libMagickCore-7.Q16HDRI.dylib",
+            #"@io_bazel_rules_go//go/platform:linux": ":linux/lib/libMagickCore-7.Q16HDRI.dylib",
+        },
+        "unsupported platform",
+    ),
+)
+
+cc_library(
+    name = "core_library",
+    hdrs = select(
+        {
+            "@io_bazel_rules_go//go/platform:darwin": glob(["darwin/include/MagickCore/*h"]),
+            #"@io_bazel_rules_go//go/platform:linux": glob(["linux/include/MagickCore/*h"]),
+        },
+        "unsupported platform",
+    ),
+    strip_include_prefix = select(
+        {
+            "@io_bazel_rules_go//go/platform:darwin": "darwin/include",
+            #"@io_bazel_rules_go//go/platform:linux": "linux/include",
+        },
+        "unspported platform",
+    ),
+    deps = [
+        ":core_import",
+    ],
+    visibility = ["//visibility:public"],
+)
+
+cc_import(
+    name = "wand_import",
+    shared_library = select(
+        {
+            "@io_bazel_rules_go//go/platform:darwin": ":darwin/lib/libMagickWand-7.Q16HDRI.dylib",
+            #"@io_bazel_rules_go//go/platform:linux": ":linux/lib/libMagickWand-7.Q16HDRI.dylib",
+        },
+        "unsupported platform.",
+    ),
+)
+
+cc_library(
+    name = "wand_library",
+    hdrs = select(
+        {
+            "@io_bazel_rules_go//go/platform:darwin": glob(["darwin/include/MagickWand/*h"]),
+            #"@io_bazel_rules_go//go/platform:linux": glob(["linux/include/MagickWand/*h"]),
+        },
+        "unsupported platform.",
+    ),
+    strip_include_prefix = select(
+        {
+            "@io_bazel_rules_go//go/platform:darwin": "darwin/include",
+            #"@io_bazel_rules_go//go/platform:linux": "linux/include",
+        },
+        "unspported platform",
+    ),
+    deps = [
+        ":wand_import",
+    ],
+    visibility = ["//visibility:public"],
+)
