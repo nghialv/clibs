@@ -24,7 +24,7 @@
 
 # Shared objects (inc. Windows DLLs)
 *.dll
-*.so
+#*.so
 *.so.*
 #*.dylib
 
@@ -58,3 +58,4 @@ dkms.conf
 /bazel-out
 /bazel-testlogs
 
+.DS_Store
