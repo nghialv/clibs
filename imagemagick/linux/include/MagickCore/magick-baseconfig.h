@@ -15,7 +15,9 @@
 /* #undef BUILD_MODULES */
 
 /* Define if you have the bzip2 library */
-/* #undef BZLIB_DELEGATE */
+#ifndef MAGICKCORE_BZLIB_DELEGATE
+#define MAGICKCORE_BZLIB_DELEGATE 1
+#endif
 
 /* Define if you have CAIRO library */
 /* #undef CAIRO_DELEGATE */
@@ -35,7 +37,7 @@
 
 /* Directory where architecture-dependent configuration files live. */
 #ifndef MAGICKCORE_CONFIGURE_PATH
-#define MAGICKCORE_CONFIGURE_PATH "/usr/etc/ImageMagick-7/"
+#define MAGICKCORE_CONFIGURE_PATH "/usr/local/etc/ImageMagick-7/"
 #endif
 
 /* Subdirectory of lib where architecture-dependent configuration files live.
@@ -49,7 +51,7 @@
 
 /* Directory where ImageMagick documents live. */
 #ifndef MAGICKCORE_DOCUMENTATION_PATH
-#define MAGICKCORE_DOCUMENTATION_PATH "/usr/share/doc/ImageMagick-7/"
+#define MAGICKCORE_DOCUMENTATION_PATH "/usr/local/share/doc/ImageMagick-7/"
 #endif
 
 /* Define if you have Display Postscript */
@@ -60,11 +62,13 @@
 
 /* Directory where executables are installed. */
 #ifndef MAGICKCORE_EXECUTABLE_PATH
-#define MAGICKCORE_EXECUTABLE_PATH "/usr/bin/"
+#define MAGICKCORE_EXECUTABLE_PATH "/usr/local/bin/"
 #endif
 
 /* Define if you have FFTW library */
-/* #undef FFTW_DELEGATE */
+#ifndef MAGICKCORE_FFTW_DELEGATE
+#define MAGICKCORE_FFTW_DELEGATE 1
+#endif
 
 /* filter subdirectory. */
 #ifndef MAGICKCORE_FILTER_DIRNAME
@@ -75,13 +79,17 @@
 /* #undef FLIF_DELEGATE */
 
 /* Define if you have FONTCONFIG library */
-/* #undef FONTCONFIG_DELEGATE */
+#ifndef MAGICKCORE_FONTCONFIG_DELEGATE
+#define MAGICKCORE_FONTCONFIG_DELEGATE 1
+#endif
 
 /* Define if you have FlashPIX library */
 /* #undef FPX_DELEGATE */
 
 /* Define if you have FREETYPE library */
-/* #undef FREETYPE_DELEGATE */
+#ifndef MAGICKCORE_FREETYPE_DELEGATE
+#define MAGICKCORE_FREETYPE_DELEGATE 1
+#endif
 
 /* Define if you have Ghostscript library or framework */
 /* #undef GS_DELEGATE */
@@ -373,7 +381,9 @@
 #endif
 
 /* Define if you have the <lcms2.h> header file. */
-/* #undef HAVE_LCMS2_H */
+#ifndef MAGICKCORE_HAVE_LCMS2_H
+#define MAGICKCORE_HAVE_LCMS2_H 1
+#endif
 
 /* Define if you have the <lcms2/lcms2.h> header file. */
 /* #undef HAVE_LCMS2_LCMS2_H */
@@ -624,10 +634,14 @@
 #endif
 
 /* X11 server supports shape extension */
-/* #undef HAVE_SHAPE */
+#ifndef MAGICKCORE_HAVE_SHAPE
+#define MAGICKCORE_HAVE_SHAPE 1
+#endif
 
 /* X11 server supports shared memory extension */
-/* #undef HAVE_SHARED_MEMORY */
+#ifndef MAGICKCORE_HAVE_SHARED_MEMORY
+#define MAGICKCORE_HAVE_SHARED_MEMORY 1
+#endif
 
 /* Define to 1 if you have the `sigaction' function. */
 #ifndef MAGICKCORE_HAVE_SIGACTION
@@ -1086,7 +1100,9 @@
 #endif
 
 /* Define if you have libheif library */
-/* #undef HEIC_DELEGATE */
+#ifndef MAGICKCORE_HEIC_DELEGATE
+#define MAGICKCORE_HEIC_DELEGATE 1
+#endif
 
 /* Define if you have jemalloc memory allocation library */
 /* #undef HasJEMALLOC */
@@ -1096,12 +1112,12 @@
 
 /* Directory where ImageMagick architecture headers live. */
 #ifndef MAGICKCORE_INCLUDEARCH_PATH
-#define MAGICKCORE_INCLUDEARCH_PATH "/usr/include/ImageMagick-7/"
+#define MAGICKCORE_INCLUDEARCH_PATH "/usr/local/include/ImageMagick-7/"
 #endif
 
 /* Directory where ImageMagick headers live. */
 #ifndef MAGICKCORE_INCLUDE_PATH
-#define MAGICKCORE_INCLUDE_PATH "/usr/include/ImageMagick-7/"
+#define MAGICKCORE_INCLUDE_PATH "/usr/local/include/ImageMagick-7/"
 #endif
 
 /* ImageMagick is formally installed under prefix */
@@ -1118,14 +1134,16 @@
 #endif
 
 /* Define if you have LCMS library */
-/* #undef LCMS_DELEGATE */
+#ifndef MAGICKCORE_LCMS_DELEGATE
+#define MAGICKCORE_LCMS_DELEGATE 1
+#endif
 
 /* Define if you have OPENJP2 library */
 /* #undef LIBOPENJP2_DELEGATE */
 
 /* Directory where architecture-dependent files live. */
 #ifndef MAGICKCORE_LIBRARY_PATH
-#define MAGICKCORE_LIBRARY_PATH "/usr/lib/ImageMagick-7.0.8/"
+#define MAGICKCORE_LIBRARY_PATH "/usr/local/lib/ImageMagick-7.0.8/"
 #endif
 
 /* Subdirectory of lib where ImageMagick architecture dependent files are
@@ -1194,7 +1212,9 @@
 /* #undef NDEBUG */
 
 /* Define if you have OPENEXR library */
-/* #undef OPENEXR_DELEGATE */
+#ifndef MAGICKCORE_OPENEXR_DELEGATE
+#define MAGICKCORE_OPENEXR_DELEGATE 1
+#endif
 
 /* Name of package */
 #ifndef MAGICKCORE_PACKAGE
@@ -1232,10 +1252,14 @@
 #endif
 
 /* Define if you have PANGOCAIRO library */
-/* #undef PANGOCAIRO_DELEGATE */
+#ifndef MAGICKCORE_PANGOCAIRO_DELEGATE
+#define MAGICKCORE_PANGOCAIRO_DELEGATE 1
+#endif
 
 /* Define if you have PANGO library */
-/* #undef PANGO_DELEGATE */
+#ifndef MAGICKCORE_PANGO_DELEGATE
+#define MAGICKCORE_PANGO_DELEGATE 1
+#endif
 
 /* enable pipes (|) in filenames */
 /* #undef PIPES_SUPPORT */
@@ -1296,7 +1320,7 @@
 
 /* Directory where architecture-independent configuration files live. */
 #ifndef MAGICKCORE_SHARE_PATH
-#define MAGICKCORE_SHARE_PATH "/usr/share/ImageMagick-7/"
+#define MAGICKCORE_SHARE_PATH "/usr/local/share/ImageMagick-7/"
 #endif
 
 /* Subdirectory of lib where architecture-independent configuration files
@@ -1485,15 +1509,17 @@
 #endif
 
 /* Define if you have X11 library */
-/* #undef X11_DELEGATE */
+#ifndef MAGICKCORE_X11_DELEGATE
+#define MAGICKCORE_X11_DELEGATE 1
+#endif
 
 /* Define if you have XML library */
-/* #undef XML_DELEGATE */
+#ifndef MAGICKCORE_XML_DELEGATE
+#define MAGICKCORE_XML_DELEGATE 1
+#endif
 
 /* Define to 1 if the X Window System is missing or not being used. */
-#ifndef MAGICKCORE_X_DISPLAY_MISSING
-#define MAGICKCORE_X_DISPLAY_MISSING 1
-#endif
+/* #undef X_DISPLAY_MISSING */
 
 /* Build self-contained, embeddable, zero-configuration ImageMagick */
 /* #undef ZERO_CONFIGURATION_SUPPORT */
