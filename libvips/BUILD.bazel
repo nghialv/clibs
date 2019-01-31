@@ -3,7 +3,7 @@ cc_import(
     shared_library = select(
         {
             "@io_bazel_rules_go//go/platform:darwin": ":darwin/lib/libgobject-2.0.dylib",
-            #"@io_bazel_rules_go//go/platform:linux": ":linux/lib/libglib-2.0.so",
+            #"@io_bazel_rules_go//go/platform:linux": ":linux/lib/libgobject-2.0.so",
         },
         "unsupported platform",
     ),
@@ -29,7 +29,11 @@ cc_library(
                 "darwin/include/gobject/*.h",
                 "darwin/include/*.h",
             ]),
-            #"@io_bazel_rules_go//go/platform:linux": glob(["linux/include/glib/*h"]),
+            "@io_bazel_rules_go//go/platform:linux": glob([
+                "linux/include/glib/**/*.h",
+                "linux/include/gobject/*.h",
+                "linux/include/*.h",
+            ]),
         },
         "unsupported platform",
     ),
@@ -40,10 +44,10 @@ cc_library(
         },
         "unspported platform",
     ),
-    deps = [
-        ":glib_import",
-        ":gobject_import",
-    ],
+    # deps = [
+    #     ":glib_import",
+    #     ":gobject_import",
+    # ],
     visibility = ["//visibility:public"],
 )
 
@@ -52,7 +56,7 @@ cc_import(
     shared_library = select(
         {
             "@io_bazel_rules_go//go/platform:darwin": ":darwin/lib/libvips.dylib",
-            #"@io_bazel_rules_go//go/platform:linux": ":linux/lib/libvips.so",
+            "@io_bazel_rules_go//go/platform:linux": ":linux/lib/libvips.so",
         },
         "unsupported platform",
     ),
@@ -63,7 +67,7 @@ cc_library(
     hdrs = select(
         {
             "@io_bazel_rules_go//go/platform:darwin": glob(["darwin/include/vips/*h"]),
-            #"@io_bazel_rules_go//go/platform:linux": glob(["linux/include/vips/*h"]),
+            "@io_bazel_rules_go//go/platform:linux": glob(["linux/include/vips/*h"]),
         },
         "unsupported platform",
     ),
