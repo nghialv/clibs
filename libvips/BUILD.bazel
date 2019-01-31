@@ -3,7 +3,7 @@ cc_import(
     shared_library = select(
         {
             "@io_bazel_rules_go//go/platform:darwin": ":darwin/lib/libgobject-2.0.dylib",
-            #"@io_bazel_rules_go//go/platform:linux": ":linux/lib/libgobject-2.0.so",
+            "@io_bazel_rules_go//go/platform:linux": ":linux/lib/libgobject-2.0.so",
         },
         "unsupported platform",
     ),
@@ -14,7 +14,7 @@ cc_import(
     shared_library = select(
         {
             "@io_bazel_rules_go//go/platform:darwin": ":darwin/lib/libglib-2.0.dylib",
-            #"@io_bazel_rules_go//go/platform:linux": ":linux/lib/libglib-2.0.so",
+            "@io_bazel_rules_go//go/platform:linux": ":linux/lib/libglib-2.0.so",
         },
         "unsupported platform",
     ),
