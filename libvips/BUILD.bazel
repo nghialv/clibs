@@ -25,8 +25,7 @@ cc_library(
     hdrs = select(
         {
             "@io_bazel_rules_go//go/platform:darwin": glob([
-                "darwin/include/glib/*.h",
-                "darwin/include/glib/deprecated/*.h",
+                "darwin/include/glib/**/*.h",
                 "darwin/include/gobject/*.h",
                 "darwin/include/*.h",
             ]),
