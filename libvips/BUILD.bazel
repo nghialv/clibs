@@ -44,10 +44,10 @@ cc_library(
         },
         "unspported platform",
     ),
-    # deps = [
-    #     ":glib_import",
-    #     ":gobject_import",
-    # ],
+    deps = [
+        ":glib_import",
+        ":gobject_import",
+    ],
     visibility = ["//visibility:public"],
 )
 
