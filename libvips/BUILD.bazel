@@ -1,0 +1,83 @@
+cc_import(
+    name = "glib_import",
+    shared_library = select(
+        {
+            "@io_bazel_rules_go//go/platform:darwin": ":darwin/lib/libgobject-2.0.dylib",
+            #"@io_bazel_rules_go//go/platform:linux": ":linux/lib/libglib-2.0.so",
+        },
+        "unsupported platform",
+    ),
+)
+
+cc_import(
+    name = "gobject_import",
+    shared_library = select(
+        {
+            "@io_bazel_rules_go//go/platform:darwin": ":darwin/lib/libglib-2.0.dylib",
+            #"@io_bazel_rules_go//go/platform:linux": ":linux/lib/libglib-2.0.so",
+        },
+        "unsupported platform",
+    ),
+)
+
+cc_library(
+    name = "glib_library",
+    hdrs = select(
+        {
+            "@io_bazel_rules_go//go/platform:darwin": glob([
+                "darwin/include/glib/*.h",
+                "darwin/include/glib/deprecated/*.h",
+                "darwin/include/gobject/*.h",
+                "darwin/include/*.h",
+            ]),
+            #"@io_bazel_rules_go//go/platform:linux": glob(["linux/include/glib/*h"]),
+        },
+        "unsupported platform",
+    ),
+    strip_include_prefix = select(
+        {
+            "@io_bazel_rules_go//go/platform:darwin": "darwin/include",
+            "@io_bazel_rules_go//go/platform:linux": "linux/include",
+        },
+        "unspported platform",
+    ),
+    deps = [
+        ":glib_import",
+        ":gobject_import",
+    ],
+    visibility = ["//visibility:public"],
+)
+
+cc_import(
+    name = "libvips_import",
+    shared_library = select(
+        {
+            "@io_bazel_rules_go//go/platform:darwin": ":darwin/lib/libvips.dylib",
+            #"@io_bazel_rules_go//go/platform:linux": ":linux/lib/libvips.so",
+        },
+        "unsupported platform",
+    ),
+)
+
+cc_library(
+    name = "libvips_library",
+    hdrs = select(
+        {
+            "@io_bazel_rules_go//go/platform:darwin": glob(["darwin/include/vips/*h"]),
+            #"@io_bazel_rules_go//go/platform:linux": glob(["linux/include/vips/*h"]),
+        },
+        "unsupported platform",
+    ),
+    strip_include_prefix = select(
+        {
+            "@io_bazel_rules_go//go/platform:darwin": "darwin/include",
+            "@io_bazel_rules_go//go/platform:linux": "linux/include",
+        },
+        "unspported platform",
+    ),
+    deps = [
+        ":libvips_import",
+        ":glib_library",
+    ],
+    visibility = ["//visibility:public"],
+)
